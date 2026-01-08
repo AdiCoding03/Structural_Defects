@@ -4,10 +4,6 @@ from PIL import Image
 import datetime as dt
 import os
 
-# from reportlab.lib.pagesizes import A4
-# from reportlab.pdfgen import canvas
-# from io import BytesIO
-
 
 from dotenv import load_dotenv
 
@@ -72,38 +68,3 @@ if st.button('Generate Report'):
             data=response.text,
             file_name='structural_defect_report.txt',
             mime="text/plain")
-
-
-# if st.button('Generate Report'):
-#     if uploaded_image is None:
-#         st.error('Please upload an image first.')
-#     else:
-#         with st.spinner('Generating Report...'):
-#             response = model.generate_content(
-#                 [prompt, image],
-#                 generation_config={"temperature": 0.2}
-#             )
-#             st.write(response.text)
-
-#         # Create PDF in memory
-#         buffer = BytesIO()
-#         c = canvas.Canvas(buffer, pagesize=A4)
-#         width, height = A4
-
-#         x, y = 40, height - 40
-#         for line in response.text.split("\n"):
-#             c.drawString(x, y, line)
-#             y -= 14
-#             if y < 40:
-#                 c.showPage()
-#                 y = height - 40
-
-#         c.save()
-#         buffer.seek(0)
-
-#         st.download_button(
-#             label="📄 Download Report (PDF)",
-#             data=buffer,
-#             file_name="structural_defect_report.pdf",
-#             mime="application/pdf"
-#         )
